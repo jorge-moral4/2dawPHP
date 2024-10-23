@@ -1,10 +1,12 @@
 <?php
+
  declare(strict_types=1);
  class Persona{
 
      function __construct(
          private string $nombre,
          private string $apellidos,
+         private int $edad
 
      ){}
      
@@ -16,14 +18,21 @@
          return $this->apellidos;
      }
 
+     public function getEdad() : int{
+        return $this->edad;
+    }
+
      public function setNombre(string $nombre){
-         $this->nombre = $nombre;
-         
+         $this->nombre = $nombre;   
      }
 
      public function setApellidos(string $apellidos){
          $this->apellidos = $apellidos;
      }
+
+     public function setEdad(int $edad){
+        $this->edad = $edad;
+    }
 
      function getNombreCompleto() : string {
          return $this->nombre . " " . $this->apellidos;
@@ -52,9 +61,10 @@
     function __construct(
         private string $nombre,
         private string $apellidos,
+        private string $edad,
         private float $sueldo = 1000,){
 
-        parent::__construct($nombre,$apellidos);
+        parent::__construct($nombre,$apellidos,$edad);
        
     } 
 
@@ -70,7 +80,7 @@
 
     public function debePagarImpuestos() {
 
-        return $this->sueldo > self::$sueldoTope;
+        return $this->sueldo > self::$sueldoTope && $this->edad > 21;
 
     }
     public function anyadirTelefono(int $telefono) : void {
@@ -114,5 +124,6 @@
 
 
 }
+
 
 ?>

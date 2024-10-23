@@ -1,10 +1,12 @@
 <?php
+
  declare(strict_types=1);
  class Persona{
 
      function __construct(
          private string $nombre,
          private string $apellidos,
+         private int $edad
 
      ){}
      
@@ -16,14 +18,21 @@
          return $this->apellidos;
      }
 
+     public function getEdad() : int{
+        return $this->edad;
+    }
+
      public function setNombre(string $nombre){
-         $this->nombre = $nombre;
-         
+         $this->nombre = $nombre;   
      }
 
      public function setApellidos(string $apellidos){
          $this->apellidos = $apellidos;
      }
+
+     public function setEdad(int $edad){
+        $this->edad = $edad;
+    }
 
      function getNombreCompleto() : string {
          return $this->nombre . " " . $this->apellidos;
@@ -38,26 +47,35 @@
 
      }
 
+     public function __toString(): string{
+
+        return self::class . ": " . $this->nombre . " " . $this->apellidos . " " . $this->edad;
+
+     }
+
  }
 
  class Empleado extends Persona{
 
-    private static float $sueldoTope = 3333;
+    private float $sueldoTope;
     private $telefonos = array();
 
-    public static function setSueldoTope(float $sueldoTope) : void{
-        self::$sueldoTope = $sueldoTope;
-    }
+    
 
     function __construct(
         private string $nombre,
         private string $apellidos,
+        private string $edad,
         private float $sueldo = 1000,){
 
-        parent::__construct($nombre,$apellidos);
+        parent::__construct($nombre,$apellidos,$edad);
+        $this->sueldoTope = 3333;
        
     } 
 
+    public function setSueldoTope(float $sueldoTope) : void{
+        $this->$sueldoTope = $sueldoTope;
+    }
     
     function getSueldo() : float {
         return $this->sueldo;
@@ -70,7 +88,7 @@
 
     public function debePagarImpuestos() {
 
-        return $this->sueldo > self::$sueldoTope;
+        return $this->sueldo > self::$sueldoTope && $this->edad > 21;
 
     }
     public function anyadirTelefono(int $telefono) : void {
@@ -112,7 +130,12 @@
         return $html;
     }
 
+    public function __toString() : string{
+        return self::class . ":" . $this->nombre . " " . $this->apellidos . " " .$this->sueldo ." ". $this->edad . " Telefonos: " . $this->listarTelefonos();
+    }
+
 
 }
+
 
 ?>

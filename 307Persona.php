@@ -1,44 +1,35 @@
 <?php
-class Persona {
-    protected $nombre;
-    protected $apellidos;
+    declare(strict_types=1);
+    class Persona{
 
-    public function __construct($nombre, $apellidos) {
-        $this->nombre = $nombre;
-        $this->apellidos = $apellidos;
+        function __construct(
+            private string $nombre,
+            private string $apellidos,
+
+        ){}
+        
+        public function getNombre() : string{
+            return $this->nombre;
+        }
+
+        public function getApellidos() : string{
+            return $this->apellidos;
+        }
+
+        public function setNombre(string $nombre){
+            $this->nombre = $nombre;
+            
+        }
+
+        public function setApellidos(string $apellidos){
+            $this->apellidos = $apellidos;
+        }
+
+        function getNombreCompleto() : string {
+            return $this->nombre . " " . $this->apellidos;
+
+        }
+
     }
 
-    public function getNombre() {
-        return $this->nombre;
-    }
-
-    public function getApellidos() {
-        return $this->apellidos;
-    }
-
-    public function getNombreCompleto() {
-        return $this->nombre . ' ' . $this->apellidos;
-
-}
-}
-class Empleado extends Persona{
-    private $salario;
-    private $telefonos;
-
-    public function __construct($nombre,$apellidos,$salario,$telefonos =[]){
-        parent::__construct($nombre,$apellidos);
-        $this->salario=$salario;
-        $this->telefonos=$telefonos;
-    }
-    public function getSalario(){
-        return $this->salario;
-    }
-    public function getTelefonos(){
-        return $this->telefonos;
-    }
-    public function addTelefono(){
-        $this->telefonos[] = $telefonos;
-    }
-
-
-}
+?>
