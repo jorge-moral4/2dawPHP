@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario de Datos Personales</title>
+</head>
+<body>
+
+    <h2>Formulario de Datos Personales</h2>
+
+    <form action="formulario.php" method="post">
+
+        <label for="nombre">Nombre y Apellidos:</label>
+        <input type="text" id="nombre" name="nombre" required>
+
+        <br>
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required>
+
+        <br>
+
+        <label for="url">URL Página Personal:</label>
+        <input type="url" id="url" name="url" required>
+
+        <br>
+
+        <label>Sexo:</label>
+        <input type="radio" id="masculino" name="sexo" value="Masculino" required>
+        <label for="masculino">Masculino</label>
+        <input type="radio" id="femenino" name="sexo" value="Femenino" required>
+        <label for="femenino">Femenino</label>
+
+        <br>
+
+        <label for="convivientes">Número de Convivientes:</label>
+        <input type="number" id="convivientes" name="convivientes" required>
+
+        <br>
+
+        <label>Aficiones:</label>
+        <input type="checkbox" id="deporte" name="aficiones[]" value="Deporte">
+        <label for="deporte">Deporte</label>
+        <input type="checkbox" id="lectura" name="aficiones[]" value="Lectura">
+        <label for="lectura">Lectura</label>
+        <input type="checkbox" id="musica" name="aficiones[]" value="Música">
+        <label for="musica">Música</label>
+        <input type="checkbox" id="viajes" name="aficiones[]" value="Viajes">
+        <label for="viajes">Viajes</label>
+
+        <br>
+
+        <label for="menu">Menú Favorito:</label>
+        <select id="menu" name="menu[]" multiple required>
+            <option value="italiano">Italiano</option>
+            <option value="asiatico">Asiático</option>
+            <option value="vegetariano">Vegetariano</option>
+            <option value="parrilla">Parrilla</option>
+        </select>
+
+        <br>
+
+        <input type="submit" value="Enviar">
+
+    </form>
+
+</body>
+</html>
